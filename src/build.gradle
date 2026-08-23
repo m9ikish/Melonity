@@ -1,0 +1,46 @@
+plugins {
+    id 'fabric-loom' version '1.10-SNAPSHOT'
+    id 'java'
+}
+
+version = '1.0-SNAPSHOT'
+group = 'ru.melonity'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:intermediary:${project.minecraft_version}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+    implementation "io.github.llamalad7:mixinextras-fabric:0.4.1"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:2.0.21"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0"
+    implementation "org.json:json:20240303"
+    compileOnly "org.projectlombok:lombok:1.18.36"
+    annotationProcessor "org.projectlombok:lombok:1.18.36"
+}
+
+// Миксины ссылаются на yarn-имена ("render", "setPos"), а проект собирается на intermediary,
+// поэтому annotation processor миксинов не может их разрезолвить и валит сборку. Он и не нужен:
+// готовый client-melonity-refmap.json лежит в ресурсах, а melonity.client.mixins.json ссылается
+// на него по имени — именно этот refmap и используется в рантайме.
+loom {
+    mixin {
+        useLegacyMixinAp = false
+    }
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.encoding = 'UTF-8'
+    it.options.release = 21
+    it.options.compilerArgs += ['-nowarn']
+}

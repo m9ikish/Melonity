@@ -1,0 +1,38 @@
+{
+  "module_enable": {
+    "subtitle": "melonity.enabled",
+    "sounds": [
+      "melonity:default/enable"
+    ]
+  },
+  "module_disable": {
+    "subtitle": "melonity.disabled",
+    "sounds": [
+      "melonity:default/disable"
+    ]
+  },
+  "variant1_enable": {
+    "subtitle": "melonity.variant1.enabled",
+    "sounds": [
+      "melonity:variant1/enable"
+    ]
+  },
+  "variant1_disable": {
+    "subtitle": "melonity.variant1.disabled",
+    "sounds": [
+      "melonity:variant1/disable"
+    ]
+  },
+  "variant2_enable": {
+    "subtitle": "melonity.variant2.enabled",
+    "sounds": [
+      "melonity:variant2/enable"
+    ]
+  },
+  "variant2_disable": {
+    "subtitle": "melonity.variant2.disabled",
+    "sounds": [
+      "melonity:variant2/disable"
+    ]
+  }
+}

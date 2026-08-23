@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "melonity",
+  "version": "1.0-SNAPSHOT",
+  "name": "Melonity",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/melonity/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "ru.melonity.fabric.client.MelonityFabricClient"
+    ],
+    "main": [
+      "ru.melonity.fabric.MelonityFabric"
+    ]
+  },
+  "mixins": [
+    "melonity.client.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.10",
+    "fabric": "*",
+    "minecraft": "1.21.1"
+  }
+}
